@@ -1,0 +1,48 @@
+
+<style>
+    table{
+      
+
+
+        width:100%;
+        margin-bottom:20px;
+    }
+    th,td{
+        text-align:left;
+        padding:8px;
+        border: 1px solid black;
+    }
+</style>
+<table border ="1" cellpadding="0"cellspacing="0"style = "border-collapse:collapse" >
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Message</th>
+    </tr>
+</thead>
+<tbody>
+    {% for obj in form3 %}
+    <tr>
+        <td>{{obj.id}}</td>
+    <td>{{obj.name}}</td>
+    <td>{{obj.email}}</td>
+    <td>{{obj.mobile}}</td>
+    <td>{{obj.Message}}</td>
+  <td>
+    <form action ="{% url 'del' obj.id %}" method="post">
+        {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
+  
+    <a href ="{% url 'update' obj.id %}" >edit</a>
+
+  </td>
+</tr>
+    {% endfor %}
+    <a href ="{% url 'index1'%}">Back</a>
+</tbody>
+</table>
+
